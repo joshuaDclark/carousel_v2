@@ -1,0 +1,73 @@
+<div class="scene">
+  <div class="carousel">
+    {% for block in section.blocks %}
+    <div class="carousel__cell"><a href="{{ block.settings.image_link }}"><img src="{{ block.settings.image | img_url: 'master' }}"><h3>{{ block.settings.title }}</h3></a></div>
+    {% endfor %}
+  </div>
+</div>
+<div class ="b_direction">
+
+  <p><button class="previous-button">Prev</button>
+  <button class="next-button">Next</button></p>
+
+</div>
+{% javascript %}
+var carousel = document.querySelector('.carousel');
+var cellCount = 9;
+var selectedIndex = 0;
+
+function rotateCarousel() {
+  var angle = selectedIndex / cellCount * -360;
+  carousel.style.transform = 'translateZ(-488px) rotateY(' + angle + 'deg)';
+}
+
+var prevButton = document.querySelector('.previous-button');
+prevButton.addEventListener( 'click', function() {
+  selectedIndex--;
+  rotateCarousel();
+});
+
+var nextButton = document.querySelector('.next-button');
+nextButton.addEventListener( 'click', function() {
+  selectedIndex++;
+  rotateCarousel();
+});
+{% endjavascript %}
+
+
+
+
+{% schema %}
+    
+{
+	
+	"blocks": [{
+		"name": "Carousel Product",
+		"type": "slide",
+		"settings": [
+			
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image"
+			},
+			{   "type": "text",
+				"id": "title",
+				"label": "Product Title"
+
+			},
+			{
+				"type": "url",
+				"id": "image_link",
+				"label": "Image Link"
+			}
+
+		]
+	}],
+	"presets": [{
+		"name": "Carousel",
+		"category": "image"
+	}]
+}
+
+{% endschema %}
