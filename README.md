@@ -14,3 +14,6 @@ Follow the 3 steps below to add the 3D carousel to your Shopify store for comple
   <!-- css for 3D Carousel -->
    <link rel="stylesheet" href="{{ 'carousel.css' | asset_url }}">
   
+
+https://user-images.githubusercontent.com/31425297/191323748-4e0a731c-7538-41c1-9cab-daa8447cf0ad.mov
+
